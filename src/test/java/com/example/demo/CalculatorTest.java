@@ -13,6 +13,18 @@ class CalculatorTest {
 	}
 
 	@Test
+	void testTrue() {
+		Calculator calculator = new Calculator();
+		assertTrue(calculator.add(3, 5) == 8);
+	}
+
+	@Test
+	void testFalse() {
+		Calculator calculator = new Calculator();
+		assertFalse(calculator.add(3, 5) < 8);
+	}
+
+	@Test
 	void testSubtract() {
 		Calculator calculator = new Calculator();
 		assertEquals(2, calculator.subtract(3, 1));
