@@ -1,0 +1,38 @@
+package com.example.demo;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class CalculatorTest {
+
+	@Test
+	void testAdd() {
+		Calculator calculator = new Calculator();
+		assertEquals(3, calculator.add(1, 2));
+	}
+
+	@Test
+	void testSubtract() {
+		Calculator calculator = new Calculator();
+		assertEquals(2, calculator.subtract(3, 1));
+	}
+
+	@Test
+	void testMultiply() {
+		Calculator calculator = new Calculator();
+		assertEquals(2, calculator.multiply(1, 2));
+	}
+
+	@Test
+	void testDivide() {
+		Calculator calculator = new Calculator();
+		assertEquals(2, calculator.divide(4, 2));
+	}
+
+	@Test
+	void testDivideByZero() {
+		Calculator calculator = new Calculator();
+		assertThrows(IllegalArgumentException.class, () -> calculator.divide(3, 0));
+	}
+}
