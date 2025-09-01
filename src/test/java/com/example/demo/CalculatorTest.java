@@ -37,6 +37,18 @@ class CalculatorTest {
 	}
 
 	@Test
+	void testMultiplyNull() {
+		Calculator calculator = new Calculator();
+		assertNull(calculator.multiply(0, null));
+	}
+
+	@Test
+	void testMultiplyNotNull() {
+		Calculator calculator = new Calculator();
+		assertNotNull(calculator.multiply(2, 3));
+	}
+
+	@Test
 	void testDivide() {
 		Calculator calculator = new Calculator();
 		assertEquals(2, calculator.divide(4, 2));

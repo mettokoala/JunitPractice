@@ -10,7 +10,10 @@ public class Calculator {
 		return a - b;
 	}
 
-	public int multiply(int a, int b) {
+	public Integer multiply(Integer a, Integer b) {
+		if (a == null || b == null) {
+			return null;
+		}
 		return a * b;
 	}
 
