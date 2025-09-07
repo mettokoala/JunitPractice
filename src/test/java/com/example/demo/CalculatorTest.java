@@ -33,19 +33,10 @@ class CalculatorTest {
 	@Test
 	void testMultiply() {
 		Calculator calculator = new Calculator();
-		assertEquals(2, calculator.multiply(1, 2));
-	}
-
-	@Test
-	void testMultiplyNull() {
-		Calculator calculator = new Calculator();
-		assertNull(calculator.multiply(0, null));
-	}
-
-	@Test
-	void testMultiplyNotNull() {
-		Calculator calculator = new Calculator();
-		assertNotNull(calculator.multiply(2, 3));
+		assertAll(
+				() -> assertEquals(2, calculator.multiply(1, 2)),
+				() -> assertNull(calculator.multiply(0, null)),
+				() -> assertNotNull(calculator.multiply(2, 3)));
 	}
 
 	@Test
