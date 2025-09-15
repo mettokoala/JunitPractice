@@ -2,37 +2,58 @@ package com.example.demo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
 
+	private static Calculator calculator;
+
+	@BeforeAll
+	static void beforeAll() {
+		calculator = new Calculator();
+	}
+
+	@AfterAll
+	static void afterAll() {
+		System.out.println("afterAll");
+	}
+
+	@BeforeEach
+	void beforeEach() {
+		System.out.println("beforeEach");
+	}
+
+	@AfterEach
+	void afterEach() {
+		System.out.println("afterEach");
+	}
+
 	@Test
 	void testAdd() {
-		Calculator calculator = new Calculator();
 		assertEquals(3, calculator.add(1, 2));
 	}
 
 	@Test
 	void testTrue() {
-		Calculator calculator = new Calculator();
 		assertTrue(calculator.add(3, 5) == 8);
 	}
 
 	@Test
 	void testFalse() {
-		Calculator calculator = new Calculator();
 		assertFalse(calculator.add(3, 5) < 8);
 	}
 
 	@Test
 	void testSubtract() {
-		Calculator calculator = new Calculator();
 		assertEquals(2, calculator.subtract(3, 1));
 	}
 
 	@Test
 	void testMultiply() {
-		Calculator calculator = new Calculator();
 		assertAll(
 				() -> assertEquals(2, calculator.multiply(1, 2)),
 				() -> assertNull(calculator.multiply(0, null)),
@@ -41,13 +62,11 @@ class CalculatorTest {
 
 	@Test
 	void testDivide() {
-		Calculator calculator = new Calculator();
 		assertEquals(2, calculator.divide(4, 2));
 	}
 
 	@Test
 	void testDivideByZero() {
-		Calculator calculator = new Calculator();
 		assertThrows(IllegalArgumentException.class, () -> calculator.divide(3, 0));
 	}
 }
