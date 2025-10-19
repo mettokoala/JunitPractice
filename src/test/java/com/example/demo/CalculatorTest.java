@@ -6,6 +6,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -33,22 +35,45 @@ class CalculatorTest {
 		System.out.println("afterEach");
 	}
 
-	@Test
+	@Nested
 	@Tag("add")
-	void testAdd() {
-		assertEquals(3, calculator.add(1, 2));
-	}
+	@DisplayName("addメソッドのテスト")
+	class addTest {
+		@BeforeAll
+		static void beforeAll() {
+			System.out.println("addのbeforeAll");
+		}
 
-	@Test
-	@Tag("add")
-	void testTrue() {
-		assertTrue(calculator.add(3, 5) == 8);
-	}
+		@AfterAll
+		static void afterAll() {
+			System.out.println("addのafterAll");
+		}
 
-	@Test
-	@Tag("add")
-	void testFalse() {
-		assertFalse(calculator.add(3, 5) < 8);
+		@BeforeEach
+		void beforeEach() {
+			System.out.println("addのbeforeEach");
+		}
+
+		@AfterEach
+		void afterEach() {
+			System.out.println("addのafterEach");
+		}
+
+		@Test
+		void testAdd() {
+			assertEquals(3, calculator.add(1, 2));
+		}
+
+		@Test
+		void testTrue() {
+			assertTrue(calculator.add(3, 5) == 8);
+		}
+
+		@Test
+		void testFalse() {
+			assertFalse(calculator.add(3, 5) < 8);
+		}
+
 	}
 
 	@Test
