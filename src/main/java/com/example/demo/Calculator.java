@@ -23,4 +23,8 @@ public class Calculator {
 		}
 		return a / b;
 	}
+
+	public boolean equalZero(int a) {
+		return a == 0;
+	}
 }

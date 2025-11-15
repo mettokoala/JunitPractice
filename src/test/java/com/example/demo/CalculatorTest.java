@@ -10,6 +10,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class CalculatorTest {
 
@@ -97,5 +100,17 @@ class CalculatorTest {
 	@Test
 	void testDivideByZero() {
 		assertThrows(IllegalArgumentException.class, () -> calculator.divide(3, 0));
+	}
+
+	@ParameterizedTest
+	@ValueSource(ints = { 1, 2, 4 })
+	void testNotZero(int a) {
+		assertFalse(calculator.equalZero(a));
+	}
+
+	@ParameterizedTest
+	@CsvSource({ "1,2,3", "3,4,7" })
+	void addMulti(int a, int b, int expected) {
+		assertEquals(expected, calculator.add(a, b));
 	}
 }
