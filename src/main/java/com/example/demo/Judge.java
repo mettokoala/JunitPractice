@@ -10,4 +10,8 @@ public class Judge {
 	public boolean isApprove() {
 		return code != null && code.startsWith("A") && value > 10;
 	}
+
+	public void notifyResult(String message) {
+		System.out.println(message);
+	}
 }

@@ -26,4 +26,9 @@ public class MathProcessor {
 			return -2;
 		}
 	}
+
+	public boolean notifyAndApprove(String message) {
+		judge.notifyResult(message);
+		return judge.isApprove();
+	}
 }
