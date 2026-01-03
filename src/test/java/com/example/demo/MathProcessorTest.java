@@ -7,13 +7,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 class MathProcessorTest {
 
-	@Mock
-	Calculator calculator;
+	@Spy
+	Calculator calculator = new Calculator();
 
 	@Mock
 	Judge judge;
@@ -23,15 +24,15 @@ class MathProcessorTest {
 
 	@Test
 	void testAddAndDouble() {
-		when(calculator.add(2, 3)).thenReturn(5);
+		doReturn(10).when(calculator).add(2, 3);
 		int actual = mathProcessor.addAndDouble(2, 3);
-		assertEquals(10, actual);
+		assertEquals(20, actual);
 	}
 
 	@Test
 	void testDivideAndDouble() {
-		when(calculator.divide(10, 2)).thenThrow(new IllegalArgumentException("0で割れません"));
-		int actual = mathProcessor.divideAndDouble(10, 2);
+		doThrow(new IllegalArgumentException("0で割れません")).when(calculator).divide(10, 0);
+		int actual = mathProcessor.divideAndDouble(10, 0);
 		assertEquals(-2, actual);
 	}
 
