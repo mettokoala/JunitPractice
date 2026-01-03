@@ -14,4 +14,16 @@ public class MathProcessor {
 		int sum = calculator.add(a, b);
 		return sum * 2;
 	}
+
+	public int divideAndDouble(int a, int b) {
+		try {
+			int divide = calculator.divide(a, b);
+			if (judge.isApprove()) {
+				return divide * 2;
+			}
+			return -1;
+		} catch (IllegalArgumentException e) {
+			return -2;
+		}
+	}
 }
