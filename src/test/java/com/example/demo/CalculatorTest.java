@@ -10,6 +10,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.api.parallel.Execution;
+import org.junit.jupiter.api.parallel.ExecutionMode;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -29,17 +32,18 @@ class CalculatorTest {
 	}
 
 	@BeforeEach
-	void beforeEach() {
-		System.out.println("beforeEach");
+	void beforeEach(TestInfo testInfo) {
+		System.out.printf("beforeEach [%s] %s%n", Thread.currentThread().getName(), testInfo.getDisplayName());
 	}
 
 	@AfterEach
-	void afterEach() {
-		System.out.println("afterEach");
+	void afterEach(TestInfo testInfo) {
+		System.out.printf("afterEach [%s] %s%n", Thread.currentThread().getName(), testInfo.getDisplayName());
 	}
 
 	@Nested
 	@Tag("add")
+	@Execution(ExecutionMode.CONCURRENT)
 	@DisplayName("addメソッドのテスト")
 	class addTest {
 		@BeforeAll
