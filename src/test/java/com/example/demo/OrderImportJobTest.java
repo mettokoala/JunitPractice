@@ -33,4 +33,12 @@ class OrderImportJobTest {
 				.isEqualTo(ExitStatus.COMPLETED);
 	}
 
+	@Test
+	void step単体を起動して正常終了すること() throws Exception {
+		JobExecution jobExecution = jobLauncherTestUtils.launchStep("orderImportStep");
+
+		assertThat(jobExecution.getExitStatus())
+				.isEqualTo(ExitStatus.COMPLETED);
+	}
+
 }
