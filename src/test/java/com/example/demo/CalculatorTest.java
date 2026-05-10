@@ -106,6 +106,17 @@ class CalculatorTest {
 		assertThrows(IllegalArgumentException.class, () -> calculator.divide(3, 0));
 	}
 
+	@Test
+	void testDivideFail() {
+		Calculator calculator = new Calculator();
+		try {
+			calculator.divide(3, 0);
+			fail("Exceptionがスローされませんでした");
+		} catch (Exception e) {
+			// 成功
+		}
+	}
+
 	@ParameterizedTest
 	@ValueSource(ints = { 1, 2, 4 })
 	void testNotZero(int a) {
