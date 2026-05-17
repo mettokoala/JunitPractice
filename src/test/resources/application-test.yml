@@ -7,3 +7,5 @@ spring:
   sql:
     init:
       mode: always
+test:
+  enabled: false
